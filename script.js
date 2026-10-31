@@ -228,18 +228,20 @@ function showEnding(id) {
 
   // FULL-SCREEN SURPRISE PHOTO
   scareImage.onload = () => {
-  scareOverlay.classList.remove("show");
+    scareOverlay.classList.remove("show");
 
-  // Restart the flash animation
-  void scareOverlay.offsetWidth;
+    // Restart the animation
+    void scareOverlay.offsetWidth;
 
-  // Play sound immediately after the photo appears
-  playEndingSound(result.sound);
+    // Show the surprise photo
+    scareOverlay.classList.add("show");
 
-  // Show the photo first
-  scareOverlay.classList.add("show");
+    // Play sound after the photo starts appearing
+    requestAnimationFrame(() => {
+      playEndingSound(result.sound);
+    });
 
-    // Display the normal ending after the flash
+    // Show the normal ending after 1 second
     window.setTimeout(() => {
       scareOverlay.classList.remove("show");
 
